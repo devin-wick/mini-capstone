@@ -15,7 +15,7 @@ class Connectfour():
 
     def place_oneBlue(self, grid: list[list[int]], col: int) -> bool:
          """Attempts to place a 1 in the lowest available 0 in the given column. Returns True if successful, False if the column is full."""
-         with open('Block 3/grid.csv', "r+",newline='') as self.grids:
+         with open('mini-capstone\grid.csv', "r+",newline='') as self.grids:
             self.csv_grid = csv.writer(self.grids)
             self.grid = grid
             self.col = col
@@ -36,7 +36,7 @@ class Connectfour():
 
     def place_oneRed(self, grid: list[list[int]], col: int) -> bool:
         """Attempts to place a 1 in the lowest available 0 in the given column. Returns True if successful, False if the column is full."""
-        with open('Block 3/grid.csv', "r+",newline='') as self.grids:
+        with open('mini-capstone\grid.csv', "r+",newline='') as self.grids:
             self.csv_grid = csv.writer(self.grids)
             self.grid = grid
             self.Flag = False
@@ -63,7 +63,7 @@ class Connectfour():
         return self.calling          #not returning false or true
     
     def checkwinHorizonal(self):
-        with open('Block 3/grid.csv', "r",newline='') as self.output:
+        with open('mini-capstone\grid.csv', "r",newline='') as self.output:
             self.countBlue = 0
             self.countRed = 0
             self.csv_reader = csv.reader(self.output)

@@ -1,0 +1,20 @@
+Notes
+
+button // 
+for button, load an image and then when collision is detected, enlarge it for visual affect.
+
+
+setup//
+after initiallizing pygame, set screen, clock, and a run loop that will run continueously based on the framerate. 
+clock will keep track of 
+
+
+
+for games that require movement of a character or sprite//
+Clock.tick() will be used to keep track of the amount of time that has passed since the last time it was returned,
+so if you have a variable dt (delta time) set to clock.tick(your desired framerate), and divide it by 1000 to convert to seconds, dt will
+equal your time in seconds since the last time it was shown.
+
+
+
+options to choose 1 player or 2. 1 player means playing against a bot that we could write in a seperepate file and import. 2 is playing against another person.
