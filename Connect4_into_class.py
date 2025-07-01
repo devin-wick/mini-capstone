@@ -2,6 +2,7 @@ from typing import Callable
 import csv
 
 
+
 class Connectfour():
     def __init__(self):
         self.grid = [
@@ -28,6 +29,7 @@ class Connectfour():
                     for self.line in self.grid:
                         self.csv_grid.writerow(self.line)
                         print(self.line)
+                    print("\n")
                     break
          if self.Flag == False:
             print(f"Column {col} is full. No placement possible.")
@@ -44,10 +46,12 @@ class Connectfour():
             for self.i in range(len(self.grid) - 1, -1, -1):
                 if self.grid[self.i][self.col] == 0:
                     self.grid[self.i][self.col] = -1
+                    
                     self.Flag = True
                     for self.line in self.grid:
                         self.csv_grid.writerow(self.line)
                         print(self.line)
+                    print("\n")
                     break
         if self.Flag == False:
             print(f"Column {col} is full. No placement possible.")
@@ -56,35 +60,72 @@ class Connectfour():
     def userChoice(self, userinput, call:Callable):
         self.userinput = userinput
         self.call = call
-        print("Player Blue Turn")
         if self.userinput == 99:
             exit()
         self.calling = self.call(self.grid, self.userinput)
         return self.calling          #not returning false or true
     
-    def checkwinHorizonal(self):
-        with open('mini-capstone\grid.csv', "r",newline='') as self.output:
-            self.countBlue = 0
-            self.countRed = 0
-            self.csv_reader = csv.reader(self.output)
-            for self.line in self.csv_reader:
-                for self.num in self.line:
-                    if self.num == '1':
-                        self.countBlue += 1
-                        if self.countBlue == 4:
-                            print("Blue winner!")
-                            exit()
-                            break
-                    else:
-                        self.countBlue = 0
-                    if self.num == '-1':
-                        self.countRed += 1
-                        if self.countRed == 4:
-                            print("Red is the winner!")
-                            exit()
-                            break
-                    else: 
-                        self.countRed = 0
+    def checkwinHorizonal(self, gridT):
+        self.gridT = gridT
+        self.gridT = self.grid
+        for self.line in self.gridT:
+            for self.num in self.line:  #fix
+                if str(self.num) == '1':
+                    self.countBlue += 1
+                    if self.countBlue == 4:
+                        print("Blue winner!")
+                        exit()
+                        break
+                else:
+                    self.countBlue = 0
+                if str(self.num) == '-1':
+                    self.countRed += 1
+                    if self.countRed == 4:
+                        print("Red is the winner!")
+                        exit()
+                        break
+        # with open('mini-capstone\grid.csv', "r",newline='') as self.output:
+        #     self.countBlue = 0
+        #     self.countRed = 0
+        #     self.csv_reader = csv.reader(self.output)
+        #     for self.line in self.csv_reader:
+        #         for self.num in self.line:
+        #             if self.num == '1':
+        #                 self.countBlue += 1
+        #                 if self.countBlue == 4:
+        #                     print("Blue winner!")
+        #                     exit()
+        #                     break
+        #             else:
+        #                 self.countBlue = 0
+        #             if self.num == '-1':
+        #                 self.countRed += 1
+        #                 if self.countRed == 4:
+        #                     print("Red is the winner!")
+        #                     exit()
+        #                     break
+        #             else: 
+        #                 self.countRed = 0
+
+    def checkwinHorizonal(self, gridT):
+        self.gridT = gridT
+        self.gridT = self.grid
+        # for self.line in self.gridT:
+        #     for self.num in self.line:  #fix
+        #         if str(self.num) == '1':
+        #             self.countBlue += 1
+        #             if self.countBlue == 4:
+        #                 print("Blue winner!")
+        #                 exit()
+        #                 break
+        #         else:
+        #             self.countBlue = 0
+        #         if str(self.num) == '-1':
+        #             self.countRed += 1
+        #             if self.countRed == 4:
+        #                 print("Red is the winner!")
+        #                 exit()
+        #                 break
 
     def checkwinVertical(self, gridT):
         self.gridT = gridT
@@ -93,7 +134,7 @@ class Connectfour():
         for self.row in zip(*self.gridT):
             self.transposed_matrix.append(list(self.row))
         for self.line in self.transposed_matrix:
-            for self.num in self.line:  #fix
+            for self.num in self.line:  
                 if str(self.num) == '1':
                     self.countBlue += 1
                     if self.countBlue == 4:
@@ -149,33 +190,32 @@ class Connectfour():
                     print("Blue is the winner!")
                     exit()
         
-    def runGames(self):
-        self.run = True
-        while self.run == True:
-            self.CurPlayer = 1
-            if self.CurPlayer == 1:
-                print("Player Blue Turn")
-                self.userinput = int(input("What row are you choosing from? 0 - 7: "))
-                self.worked = self.userChoice(self.userinput, self.place_oneBlue)
-                if self.worked == True:
-                    self.CurPlayer = 0
-                else:
-                    self.CurPlayer = 1
-                self.checkwinHorizonal()
-                self.checkwinVertical(self.grid)
-                self.check_diagonalsBlue(self.grid)
+    # def runGames(self):
+    #     self.run = True
+    #     while self.run == True:
+    #         self.CurPlayer = 1
+    #         if self.CurPlayer == 1:
+    #             print("Player Blue Turn")
+    #             self.worked = self.userChoice(self.userinput, self.place_oneBlue)
+    #             if self.worked == True:
+    #                 self.CurPlayer = 0
+    #             else:
+    #                 self.CurPlayer = 1
+    #             self.checkwinHorizonal()
+    #             self.checkwinVertical(self.grid)
+    #             self.check_diagonalsBlue(self.grid)
 
-            if self.CurPlayer == 0:
-                print("Player Red Turn")
-                self.userinput = int(input("What row are you choosing from? 0 - 7: "))
-                self.worked = self.userChoice(self.userinput, self.place_oneRed)
-                if self.worked == True:
-                    self.CurPlayer = 1
-                else:
-                    self.CurPlayer = 0
-                self.checkwinHorizonal()
-                self.checkwinVertical(self.grid)
-                self.check_diagonalsRed(self.grid)
+    #         if self.CurPlayer == 0:
+    #             print("Player Red Turn")
+    #             self.userinput = int(input("What row are you choosing from? 0 - 7: "))
+    #             self.worked = self.userChoice(self.userinput, self.place_oneRed)
+    #             if self.worked == True:
+    #                 self.CurPlayer = 1
+    #             else:
+    #                 self.CurPlayer = 0
+    #             self.checkwinHorizonal()
+    #             self.checkwinVertical(self.grid)
+    #             self.check_diagonalsRed(self.grid)
 
 if __name__ == "__main__":
     Connectfour().runGames()

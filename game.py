@@ -21,7 +21,7 @@ class Main:
         self.height = root.winfo_screenheight()
         self.native_res = (self.width, self.height)
         root.destroy()
-        self.screen = pygame.display.set_mode((1280,720), pygame.RESIZABLE) 
+        self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN) 
         self.w = self.screen.get_width()
         self.h = self.screen.get_height()
         self.display = pygame.Surface((350, 200))
@@ -173,6 +173,8 @@ class screen_play:
 
 
 
+
+
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         pygame.quit()
@@ -187,7 +189,9 @@ class screen_play:
                                             self.CurPlayer = 0
                                         else:
                                             self.CurPlayer = 1
-                                        gameCSV_instance.checkwinHorizonal()
+                                            # self.back_button = Button(image=pygame.image.load("assets/RECT pngs/Back Rect.png"), pos=(main_instance.w//2, (main_instance.h//2) + ((main_instance.h//9)*2)), 
+                                            #     text_input="CAN NOT PLACE THERE", font=main_instance.get_font(90), base_color="#1d72bc", hovering_color="White")
+                                        gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
                                         gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                         gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                                 elif self.Column2Button.checkForInput(self.play_mouse_pos):
@@ -197,7 +201,7 @@ class screen_play:
                                             self.CurPlayer = 0
                                         else:
                                             self.CurPlayer = 1
-                                        gameCSV_instance.checkwinHorizonal()
+                                        gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
                                         gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                         gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                                 elif self.Column3Button.checkForInput(self.play_mouse_pos):
@@ -207,7 +211,7 @@ class screen_play:
                                          self.CurPlayer = 0
                                        else:
                                             self.CurPlayer = 1
-                                       gameCSV_instance.checkwinHorizonal()
+                                       gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
                                        gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                        gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                                 elif self.Column4Button.checkForInput(self.play_mouse_pos):
@@ -217,7 +221,7 @@ class screen_play:
                                             self.CurPlayer = 0
                                        else:
                                             self.CurPlayer = 1
-                                       gameCSV_instance.checkwinHorizonal()
+                                       gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
                                        gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                        gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                                 elif self.Column5Button.checkForInput(self.play_mouse_pos):
@@ -227,7 +231,7 @@ class screen_play:
                                             self.CurPlayer = 0
                                         else:
                                             self.CurPlayer = 1
-                                        gameCSV_instance.checkwinHorizonal()
+                                        gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
                                         gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                         gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                                 elif self.Column6Button.checkForInput(self.play_mouse_pos):
@@ -237,7 +241,7 @@ class screen_play:
                                             self.CurPlayer = 0
                                        else:
                                             self.CurPlayer = 1
-                                       gameCSV_instance.checkwinHorizonal()
+                                       gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
                                        gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                        gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                                 elif self.Column7Button.checkForInput(self.play_mouse_pos):
@@ -247,7 +251,7 @@ class screen_play:
                                             self.CurPlayer = 0
                                         else:
                                             self.CurPlayer = 1
-                                        gameCSV_instance.checkwinHorizonal()
+                                        gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
                                         gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                         gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
 
@@ -261,7 +265,7 @@ class screen_play:
                                         self.CurPlayer = 1
                                     else:
                                         self.CurPlayer = 0
-                                    gameCSV_instance.checkwinHorizonal()
+                                    gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
                                     gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                     gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                             elif self.Column2Button.checkForInput(self.play_mouse_pos):
@@ -271,7 +275,7 @@ class screen_play:
                                         self.CurPlayer = 1
                                     else:
                                         self.CurPlayer = 0
-                                    gameCSV_instance.checkwinHorizonal()
+                                    gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
                                     gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                     gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                             elif self.Column3Button.checkForInput(self.play_mouse_pos):
@@ -281,7 +285,7 @@ class screen_play:
                                         self.CurPlayer = 1
                                     else:
                                         self.CurPlayer = 0
-                                    gameCSV_instance.checkwinHorizonal()
+                                    gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
                                     gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                     gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                             elif self.Column4Button.checkForInput(self.play_mouse_pos):
@@ -291,7 +295,7 @@ class screen_play:
                                         self.CurPlayer = 1
                                     else:
                                         self.CurPlayer = 0
-                                    gameCSV_instance.checkwinHorizonal()
+                                    gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
                                     gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                     gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                             elif self.Column5Button.checkForInput(self.play_mouse_pos):
@@ -301,7 +305,7 @@ class screen_play:
                                         self.CurPlayer = 1
                                     else:
                                         self.CurPlayer = 0
-                                    gameCSV_instance.checkwinHorizonal()
+                                    gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
                                     gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                     gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                             elif self.Column6Button.checkForInput(self.play_mouse_pos):
@@ -311,7 +315,7 @@ class screen_play:
                                         self.CurPlayer = 1
                                     else:
                                         self.CurPlayer = 0
-                                    gameCSV_instance.checkwinHorizonal()
+                                    gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
                                     gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                     gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                             elif self.Column7Button.checkForInput(self.play_mouse_pos):
@@ -321,7 +325,7 @@ class screen_play:
                                         self.CurPlayer = 1
                                     else:
                                         self.CurPlayer = 0
-                                    gameCSV_instance.checkwinHorizonal()
+                                    gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
                                     gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                     gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                         
@@ -329,13 +333,28 @@ class screen_play:
                         
 
                 
+                
+
                 # self.play_text = main_instance.get_font(45).render("This is the PLAY screen.", True, "White")
                 # self.play_rect = self.play_text.get_rect(center=(main_instance.w//2, (main_instance.h//2)))
                 # main_instance.screen.blit(self.play_text, self.play_rect)
-                self.imageBoard = pygame.image.load('mini-capstone/board.png')
-                self.scaled_image2 = pygame.transform.scale(self.imageBoard, (1520, 870))
-                main_instance.screen.blit(self.scaled_image2, (200,100))
+                # self.imageBoard = pygame.image.load('mini-capstone/board.png')
+                # self.scaled_image2 = pygame.transform.scale(self.imageBoard, (1420, 892))
+                # main_instance.screen.blit(self.scaled_image2, ((main_instance.w - 1420) // 2, (main_instance.h - 892) // 2))
 
+
+
+                self.blue_chip = pygame.image.load('connect-game/assets/blue.png')
+                self.blue_chip.set_colorkey((255,255,255))
+                self.red_chip = pygame.image.load('connect-game/assets/red.png')
+                self.red_chip.set_colorkey((255,255,255))
+
+                self.cell_width = (1420 // 7) - 8
+                self.cell_height = (892 // 6) - 4
+
+                self.chip_size = (135, 135)
+                self.blue_chip = pygame.transform.scale(self.blue_chip, self.chip_size)
+                self.red_chip = pygame.transform.scale(self.red_chip, self.chip_size)
             
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
@@ -344,6 +363,18 @@ class screen_play:
                         if self.back_button.checkForInput(self.play_mouse_pos):
                             if event.button == 1:
                                 screen_mainmenu.main_menu(play_instance, options_instance)
+                offset_Horz = (main_instance.w - 1420) // 2
+                offset_vert = (main_instance.h - 892 ) // 2
+                for row in range(6):
+                    for col in range(7):
+                        value = gameCSV_instance.grid[row][col]
+                        x =  offset_Horz + col * self.cell_width + (self.cell_width - self.chip_size[0])
+                        y = offset_vert + row * self.cell_height + (self.cell_height - self.chip_size[1])
+
+                        if value == 1:
+                            main_instance.screen.blit(self.blue_chip, (x, y))
+                        elif value == -1:
+                            main_instance.screen.blit(self.red_chip, (x, y))
 
                 pygame.display.update()
                 pygame.display.flip()
