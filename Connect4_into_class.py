@@ -16,7 +16,7 @@ class Connectfour():
 
     def place_oneBlue(self, grid: list[list[int]], col: int) -> bool:
          """Attempts to place a 1 in the lowest available 0 in the given column. Returns True if successful, False if the column is full."""
-         with open('mini-capstone\grid.csv', "r+",newline='') as self.grids:
+         with open('grid.csv', "r+",newline='') as self.grids:
             self.csv_grid = csv.writer(self.grids)
             self.grid = grid
             self.col = col
@@ -38,7 +38,7 @@ class Connectfour():
 
     def place_oneRed(self, grid: list[list[int]], col: int) -> bool:
         """Attempts to place a 1 in the lowest available 0 in the given column. Returns True if successful, False if the column is full."""
-        with open('mini-capstone\grid.csv', "r+",newline='') as self.grids:
+        with open('grid.csv', "r+",newline='') as self.grids:
             self.csv_grid = csv.writer(self.grids)
             self.grid = grid
             self.Flag = False
@@ -65,25 +65,8 @@ class Connectfour():
         self.calling = self.call(self.grid, self.userinput)
         return self.calling          #not returning false or true
     
-    def checkwinHorizonal(self, gridT):
-        self.gridT = gridT
-        self.gridT = self.grid
-        for self.line in self.gridT:
-            for self.num in self.line:  #fix
-                if str(self.num) == '1':
-                    self.countBlue += 1
-                    if self.countBlue == 4:
-                        print("Blue winner!")
-                        exit()
-                        break
-                else:
-                    self.countBlue = 0
-                if str(self.num) == '-1':
-                    self.countRed += 1
-                    if self.countRed == 4:
-                        print("Red is the winner!")
-                        exit()
-                        break
+    def checkwinHorizonal(self):
+        return self.grid
         # with open('mini-capstone\grid.csv', "r",newline='') as self.output:
         #     self.countBlue = 0
         #     self.countRed = 0
@@ -107,25 +90,6 @@ class Connectfour():
         #             else: 
         #                 self.countRed = 0
 
-    def checkwinHorizonal(self, gridT):
-        self.gridT = gridT
-        self.gridT = self.grid
-        # for self.line in self.gridT:
-        #     for self.num in self.line:  #fix
-        #         if str(self.num) == '1':
-        #             self.countBlue += 1
-        #             if self.countBlue == 4:
-        #                 print("Blue winner!")
-        #                 exit()
-        #                 break
-        #         else:
-        #             self.countBlue = 0
-        #         if str(self.num) == '-1':
-        #             self.countRed += 1
-        #             if self.countRed == 4:
-        #                 print("Red is the winner!")
-        #                 exit()
-        #                 break
 
     def checkwinVertical(self, gridT):
         self.gridT = gridT
@@ -160,7 +124,7 @@ class Connectfour():
         for self.row in range(self.rows - 3):  # avoid index out of bounds
             for self.col in range(self.cols - 3):
                 self.val = self.grid[self.row][self.col]
-                if self.val != 0 and self.val == self.grid[self.row+1][self.col+1] == self.grid[self.row+2][self.col+2] == self.grid[self.row+3][self.col+3]:
+                if self.val != 0  and  self.val == self.grid[self.row+1][self.col+1] == self.grid[self.row+2][self.col+2] == self.grid[self.row+3][self.col+3]:
                     print("Blue is the winner!")
                     exit()
 
@@ -179,15 +143,15 @@ class Connectfour():
         for self.row in range(self.rows - 3):  # avoid index out of bounds
             for self.col in range(self.cols - 3):
                 self.val = self.grid[self.row][self.col]
-                if self.val != 0 and self.val == self.grid[self.row+1][self.col+1] == self.grid[self.row+2][self.col+2] == self.grid[self.row+3][self.col+3]:
-                    print("Blue is the winner!")
+                if self.val != 0  == -1 and self.val == self.grid[self.row+1][self.col+1] == self.grid[self.row+2][self.col+2] == self.grid[self.row+3][self.col+3]:
+                    print("Red is the winner!")
                     exit()
 
         for self.row in range(3, self.rows):  # start from row 3 to avoid going out of bounds upward
             for self.col in range(self.cols - 3):
                 self.val = self.grid[self.row][self.col]
-                if self.val != 0 and self.val == self.grid[self.row-1][self.col+1] == grid[self.row-2][self.col+2] == grid[self.row-3][self.col+3]:
-                    print("Blue is the winner!")
+                if self.val != 0  and self.val ==  self.grid[self.row-1][self.col+1] == grid[self.row-2][self.col+2] == grid[self.row-3][self.col+3]:
+                    print("Red is the winner!")
                     exit()
         
     # def runGames(self):

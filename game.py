@@ -10,7 +10,7 @@ class Main:
 
 
     def get_font(self, size): 
-        return pygame.font.Font("connect-game/assets/fonts/LemonMilk.ttf", size)
+        return pygame.font.Font("assets/fonts/LemonMilk.ttf", size)
 
 
 
@@ -21,7 +21,7 @@ class Main:
         self.height = root.winfo_screenheight()
         self.native_res = (self.width, self.height)
         root.destroy()
-        self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN) 
+        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN) 
         self.w = self.screen.get_width()
         self.h = self.screen.get_height()
         self.display = pygame.Surface((350, 200))
@@ -32,7 +32,7 @@ class Main:
     def run(self):
         play_instance = screen_play.play_screen
         options_instance = screen_options.options_screen
-        # self.clock.tick(60)
+        
         screen_mainmenu.main_menu(play_instance, options_instance)
 
 
@@ -44,7 +44,7 @@ class screen_mainmenu:
             
             pygame.display.set_caption("Main Menu")
             while True:
-                self.image = pygame.image.load("connect-game/assets/BG.jpg")
+                self.image = pygame.image.load("assets/backgrounds/BG.jpg")
                 # self.imageBoard = pygame.image.load('mini-capstone/board.png')
                 self.scaled_image = pygame.transform.scale(self.image, (main_instance.w, main_instance.h))
                 main_instance.screen.blit(self.scaled_image, (0,0))
@@ -55,11 +55,11 @@ class screen_mainmenu:
                 MENU_TEXT = main_instance.get_font(100).render("CONNECT 4", True, "#fdfdfd")
                 MENU_RECT = MENU_TEXT.get_rect(center=(main_instance.w//2, (main_instance.h//2)-(main_instance.h//9)*3.8))
 
-                play_button = Button(image=pygame.image.load("connect-game/assets/RECT pngs/Play Rect.png"), pos=(main_instance.w//2, (main_instance.h//2) - ((main_instance.h//8.6)*2)), 
+                play_button = Button(image=pygame.image.load("assets/RECT pngs/Play Rect.png"), pos=(main_instance.w//2, (main_instance.h//2) - ((main_instance.h//8.6)*2)), 
                                     text_input="PLAY", font=main_instance.get_font(90), base_color="#1d72bc", hovering_color="White")
-                options_button = Button(image=pygame.image.load("connect-game/assets/RECT pngs/Options Rect.png"), pos=(main_instance.w//2, (main_instance.h//2)), 
+                options_button = Button(image=pygame.image.load("assets/RECT pngs/Options Rect.png"), pos=(main_instance.w//2, (main_instance.h//2)), 
                                     text_input="OPTIONS", font=main_instance.get_font(90), base_color="#1d72bc", hovering_color="White")
-                quit_button = Button(image=pygame.image.load("connect-game/assets/RECT pngs/Quit Rect.png"), pos=(main_instance.w//2, (main_instance.h//2) + ((main_instance.h//8.6)*2)), 
+                quit_button = Button(image=pygame.image.load("assets/RECT pngs/Quit Rect.png"), pos=(main_instance.w//2, (main_instance.h//2) + ((main_instance.h//8.6)*2)), 
                                     text_input="QUIT", font=main_instance.get_font(90), base_color="#1d72bc", hovering_color="White")
 
                 main_instance.screen.blit(MENU_TEXT, MENU_RECT)
@@ -100,12 +100,15 @@ class screen_play:
             self.CurPlayer = 1
             while True:
                 main_instance.screen.fill('black')
+                self.imageBoard = pygame.image.load('assets/backgrounds/pokemon.jpg')
+                self.scaled_image2 = pygame.transform.scale(self.imageBoard, (main_instance.w, main_instance.h))
+                main_instance.screen.blit(self.scaled_image2, (0,0))
                 self.play_mouse_pos = pygame.mouse.get_pos()
                 
 
                 # self.back_button = Button(image=pygame.image.load("connect-game/assets/RECT pngs/Back Rect.png"), pos=(main_instance.w//2, (main_instance.h//2) + ((main_instance.h//9)*2)), 
                 #                     text_input="Back", font=main_instance.get_font(90), base_color="#1d72bc", hovering_color="White")
-                self.image1 = pygame.image.load("connect-game/assets/RECT pngs/Back Rect.png")
+                self.image1 = pygame.image.load("assets/RECT pngs/Back Rect.png")
                 self.back_buttonTransform = pygame.transform.scale(self.image1, (200, 60))                         
                 self.back_button = Button(image= self.back_buttonTransform, pos = (70,20), 
                                     text_input="Back", font=main_instance.get_font(20), base_color="#1d72bc", hovering_color="White")
@@ -114,7 +117,7 @@ class screen_play:
                 
 
                 #Column1
-                self.Column1 = pygame.image.load("connect-game/assets/RECT pngs/Back Rect.png")
+                self.Column1 = pygame.image.load("assets/RECT pngs/Back Rect.png")
                 self.Column1Trans = pygame.transform.scale(self.Column1, (150, 60))                         
                 self.Column1Button = Button(image= self.Column1Trans, pos = (345,60), 
                                     text_input="Column 1", font=main_instance.get_font(20), base_color="#1d72bc", hovering_color="White")
@@ -123,7 +126,7 @@ class screen_play:
 
                 
                 # #Column2
-                self.Column2 = pygame.image.load("connect-game/assets/RECT pngs/Back Rect.png")
+                self.Column2 = pygame.image.load("assets/RECT pngs/Back Rect.png")
                 self.Column2Trans = pygame.transform.scale(self.Column2, (150, 60))                         
                 self.Column2Button = Button(image= self.Column2Trans, pos = (555,60), 
                                     text_input="Column 2", font=main_instance.get_font(20), base_color="#1d72bc", hovering_color="White")
@@ -131,7 +134,7 @@ class screen_play:
                 self.Column2Button.update(main_instance.screen)
                 
                 # #Column3
-                self.Column3 = pygame.image.load("connect-game/assets/RECT pngs/Back Rect.png")
+                self.Column3 = pygame.image.load("assets/RECT pngs/Back Rect.png")
                 self.Column3Trans = pygame.transform.scale(self.Column3, (150, 60))                         
                 self.Column3Button = Button(image= self.Column3Trans, pos = (760,60), 
                                     text_input="Column 3", font=main_instance.get_font(20), base_color="#1d72bc", hovering_color="White")
@@ -139,7 +142,7 @@ class screen_play:
                 self.Column3Button.update(main_instance.screen)
                 
                 # #Column4
-                self.Column4 = pygame.image.load("connect-game/assets/RECT pngs/Back Rect.png")
+                self.Column4 = pygame.image.load("assets/RECT pngs/Back Rect.png")
                 self.Column4Trans = pygame.transform.scale(self.Column4, (150, 60))                         
                 self.Column4Button = Button(image= self.Column4Trans, pos = (960,60), 
                                     text_input="Column 4", font=main_instance.get_font(20), base_color="#1d72bc", hovering_color="White")
@@ -147,7 +150,7 @@ class screen_play:
                 self.Column4Button.update(main_instance.screen)
                 
                 # #Column5
-                self.Column5 = pygame.image.load("connect-game/assets/RECT pngs/Back Rect.png")
+                self.Column5 = pygame.image.load("assets/RECT pngs/Back Rect.png")
                 self.Column5Trans = pygame.transform.scale(self.Column5, (150, 60))                         
                 self.Column5Button = Button(image= self.Column5Trans, pos = (1170,60), 
                                     text_input="Column 5", font=main_instance.get_font(20), base_color="#1d72bc", hovering_color="White")
@@ -155,7 +158,7 @@ class screen_play:
                 self.Column5Button.update(main_instance.screen)
                 
                 #Column6
-                self.Column6 = pygame.image.load("connect-game/assets/RECT pngs/Back Rect.png")
+                self.Column6 = pygame.image.load("assets/RECT pngs/Back Rect.png")
                 self.Column6Trans = pygame.transform.scale(self.Column6, (150, 60))                         
                 self.Column6Button = Button(image= self.Column6Trans, pos = (1377,60), 
                                     text_input="Column 6", font=main_instance.get_font(20), base_color="#1d72bc", hovering_color="White")
@@ -163,7 +166,7 @@ class screen_play:
                 self.Column6Button.update(main_instance.screen)
 
                 #Column 7
-                self.Column7 = pygame.image.load("connect-game/assets/RECT pngs/Back Rect.png")
+                self.Column7 = pygame.image.load("assets/RECT pngs/Back Rect.png")
                 self.Column7Trans = pygame.transform.scale(self.Column7, (150, 60))                         
                 self.Column7Button = Button(image= self.Column7Trans, pos = (1585,60), 
                                     text_input="Column 7", font=main_instance.get_font(20), base_color="#1d72bc", hovering_color="White")
@@ -179,6 +182,10 @@ class screen_play:
                     if event.type == pygame.QUIT:
                         pygame.quit()
                         sys.exit()
+                    elif event.type == pygame.MOUSEBUTTONDOWN:
+                        if self.back_button.checkForInput(self.play_mouse_pos):
+                            if event.button == 1:
+                                screen_mainmenu.main_menu(play_instance, options_instance)
                      #--------------------------------- PLAYER BLUE BELOW------------------------------
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         if self.CurPlayer == 1:
@@ -191,9 +198,9 @@ class screen_play:
                                             self.CurPlayer = 1
                                             # self.back_button = Button(image=pygame.image.load("assets/RECT pngs/Back Rect.png"), pos=(main_instance.w//2, (main_instance.h//2) + ((main_instance.h//9)*2)), 
                                             #     text_input="CAN NOT PLACE THERE", font=main_instance.get_font(90), base_color="#1d72bc", hovering_color="White")
-                                        gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
+                                        gameCSV_instance.checkwinHorizonal()
                                         gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
-                                        gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
+                                        gameCSV_instance.check_diagonalsBlue(gameCSV_instance.grid)
                                 elif self.Column2Button.checkForInput(self.play_mouse_pos):
                                     if event.button == 1:
                                         self.worked = gameCSV_instance.userChoice(1,gameCSV_instance.place_oneBlue)
@@ -201,9 +208,9 @@ class screen_play:
                                             self.CurPlayer = 0
                                         else:
                                             self.CurPlayer = 1
-                                        gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
+                                        gameCSV_instance.checkwinHorizonal()
                                         gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
-                                        gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
+                                        gameCSV_instance.check_diagonalsBlue(gameCSV_instance.grid)
                                 elif self.Column3Button.checkForInput(self.play_mouse_pos):
                                     if event.button == 1:
                                        self.worked =  gameCSV_instance.userChoice(2,gameCSV_instance.place_oneBlue)
@@ -211,9 +218,9 @@ class screen_play:
                                          self.CurPlayer = 0
                                        else:
                                             self.CurPlayer = 1
-                                       gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
+                                       gameCSV_instance.checkwinHorizonal()
                                        gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
-                                       gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
+                                       gameCSV_instance.check_diagonalsBlue(gameCSV_instance.grid)
                                 elif self.Column4Button.checkForInput(self.play_mouse_pos):
                                     if event.button == 1:
                                        self.worked =  gameCSV_instance.userChoice(3,gameCSV_instance.place_oneBlue)
@@ -221,9 +228,9 @@ class screen_play:
                                             self.CurPlayer = 0
                                        else:
                                             self.CurPlayer = 1
-                                       gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
+                                       gameCSV_instance.checkwinHorizonal()
                                        gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
-                                       gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
+                                       gameCSV_instance.check_diagonalsBlue(gameCSV_instance.grid)
                                 elif self.Column5Button.checkForInput(self.play_mouse_pos):
                                     if event.button == 1:
                                         self.worked = gameCSV_instance.userChoice(4,gameCSV_instance.place_oneBlue)
@@ -231,9 +238,9 @@ class screen_play:
                                             self.CurPlayer = 0
                                         else:
                                             self.CurPlayer = 1
-                                        gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
+                                        gameCSV_instance.checkwinHorizonal()
                                         gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
-                                        gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
+                                        gameCSV_instance.check_diagonalsBlue(gameCSV_instance.grid)
                                 elif self.Column6Button.checkForInput(self.play_mouse_pos):
                                     if event.button == 1:
                                        self.worked =  gameCSV_instance.userChoice(5,gameCSV_instance.place_oneBlue)
@@ -241,9 +248,9 @@ class screen_play:
                                             self.CurPlayer = 0
                                        else:
                                             self.CurPlayer = 1
-                                       gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
+                                       gameCSV_instance.checkwinHorizonal()
                                        gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
-                                       gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
+                                       gameCSV_instance.check_diagonalsBlue(gameCSV_instance.grid)
                                 elif self.Column7Button.checkForInput(self.play_mouse_pos):
                                     if event.button == 1:
                                         self.worked = gameCSV_instance.userChoice(6,gameCSV_instance.place_oneBlue)
@@ -251,9 +258,9 @@ class screen_play:
                                             self.CurPlayer = 0
                                         else:
                                             self.CurPlayer = 1
-                                        gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
+                                        gameCSV_instance.checkwinHorizonal()
                                         gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
-                                        gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
+                                        gameCSV_instance.check_diagonalsBlue(gameCSV_instance.grid)
 
                                         #--------------------------------- PLAYER RED BELOW------------------------------
 
@@ -265,7 +272,7 @@ class screen_play:
                                         self.CurPlayer = 1
                                     else:
                                         self.CurPlayer = 0
-                                    gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
+                                    gameCSV_instance.checkwinHorizonal()
                                     gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                     gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                             elif self.Column2Button.checkForInput(self.play_mouse_pos):
@@ -275,7 +282,7 @@ class screen_play:
                                         self.CurPlayer = 1
                                     else:
                                         self.CurPlayer = 0
-                                    gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
+                                    gameCSV_instance.checkwinHorizonal()
                                     gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                     gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                             elif self.Column3Button.checkForInput(self.play_mouse_pos):
@@ -285,7 +292,7 @@ class screen_play:
                                         self.CurPlayer = 1
                                     else:
                                         self.CurPlayer = 0
-                                    gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
+                                    gameCSV_instance.checkwinHorizonal()
                                     gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                     gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                             elif self.Column4Button.checkForInput(self.play_mouse_pos):
@@ -295,7 +302,7 @@ class screen_play:
                                         self.CurPlayer = 1
                                     else:
                                         self.CurPlayer = 0
-                                    gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
+                                    gameCSV_instance.checkwinHorizonal()
                                     gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                     gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                             elif self.Column5Button.checkForInput(self.play_mouse_pos):
@@ -305,7 +312,7 @@ class screen_play:
                                         self.CurPlayer = 1
                                     else:
                                         self.CurPlayer = 0
-                                    gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
+                                    gameCSV_instance.checkwinHorizonal()
                                     gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                     gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                             elif self.Column6Button.checkForInput(self.play_mouse_pos):
@@ -315,7 +322,7 @@ class screen_play:
                                         self.CurPlayer = 1
                                     else:
                                         self.CurPlayer = 0
-                                    gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
+                                    gameCSV_instance.checkwinHorizonal()
                                     gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                     gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                             elif self.Column7Button.checkForInput(self.play_mouse_pos):
@@ -325,7 +332,7 @@ class screen_play:
                                         self.CurPlayer = 1
                                     else:
                                         self.CurPlayer = 0
-                                    gameCSV_instance.checkwinHorizonal(gameCSV_instance.grid)
+                                    gameCSV_instance.checkwinHorizonal()
                                     gameCSV_instance.checkwinVertical(gameCSV_instance.grid)
                                     gameCSV_instance.check_diagonalsRed(gameCSV_instance.grid)
                         
@@ -338,31 +345,29 @@ class screen_play:
                 # self.play_text = main_instance.get_font(45).render("This is the PLAY screen.", True, "White")
                 # self.play_rect = self.play_text.get_rect(center=(main_instance.w//2, (main_instance.h//2)))
                 # main_instance.screen.blit(self.play_text, self.play_rect)
-                # self.imageBoard = pygame.image.load('mini-capstone/board.png')
-                # self.scaled_image2 = pygame.transform.scale(self.imageBoard, (1420, 892))
-                # main_instance.screen.blit(self.scaled_image2, ((main_instance.w - 1420) // 2, (main_instance.h - 892) // 2))
+                
 
 
+                self.blue_chip = pygame.image.load('assets/backgrounds/blue.png')
+                
+                self.red_chip = pygame.image.load('assets/backgrounds/red.png')
+                self.gray_chip = pygame.image.load('assets/backgrounds/gray.png')
 
-                self.blue_chip = pygame.image.load('connect-game/assets/blue.png')
-                self.blue_chip.set_colorkey((255,255,255))
-                self.red_chip = pygame.image.load('connect-game/assets/red.png')
-                self.red_chip.set_colorkey((255,255,255))
-
+                
+              
                 self.cell_width = (1420 // 7) - 8
-                self.cell_height = (892 // 6) - 4
+                self.cell_height = (892 // 6) 
 
                 self.chip_size = (135, 135)
+    
                 self.blue_chip = pygame.transform.scale(self.blue_chip, self.chip_size)
                 self.red_chip = pygame.transform.scale(self.red_chip, self.chip_size)
+                self.gray_chip = pygame.transform.scale(self.gray_chip, self.chip_size)
             
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         pygame.QUIT, sys.exit()
-                    elif event.type == pygame.MOUSEBUTTONDOWN:
-                        if self.back_button.checkForInput(self.play_mouse_pos):
-                            if event.button == 1:
-                                screen_mainmenu.main_menu(play_instance, options_instance)
+                    
                 offset_Horz = (main_instance.w - 1420) // 2
                 offset_vert = (main_instance.h - 892 ) // 2
                 for row in range(6):
@@ -370,12 +375,13 @@ class screen_play:
                         value = gameCSV_instance.grid[row][col]
                         x =  offset_Horz + col * self.cell_width + (self.cell_width - self.chip_size[0])
                         y = offset_vert + row * self.cell_height + (self.cell_height - self.chip_size[1])
-
+                        main_instance.screen.blit(self.gray_chip, (x, y))
                         if value == 1:
                             main_instance.screen.blit(self.blue_chip, (x, y))
                         elif value == -1:
                             main_instance.screen.blit(self.red_chip, (x, y))
 
+                main_instance.clock.tick(60)
                 pygame.display.update()
                 pygame.display.flip()
 
@@ -391,7 +397,7 @@ class screen_options:
             self.options_mouse_pos = pygame.mouse.get_pos()
 
 
-            self.back_button = Button(image=pygame.image.load("connect-game/assets/RECT pngs/Back Rect.png"), pos=(main_instance.w//2, (main_instance.h//2) + ((main_instance.h//9)*2)), 
+            self.back_button = Button(image=pygame.image.load("assets/RECT pngs/Back Rect.png"), pos=(main_instance.w//2, (main_instance.h//2) + ((main_instance.h//9)*2)), 
                             text_input="Back", font=main_instance.get_font(75), base_color="#1d72bc", hovering_color="White") 
             self.back_button.changeColor(self.options_mouse_pos)
             self.back_button.update(main_instance.screen)
